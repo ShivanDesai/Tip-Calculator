@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Tip Calculator
 //
-//  Created by Shivan Desai on 1/1/17.
+//  Created by Rajib Sinha on 1/1/17.
 //  Copyright © 2017 Shivan Desai. All rights reserved.
 //
 
