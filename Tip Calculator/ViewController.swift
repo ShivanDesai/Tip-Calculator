@@ -48,6 +48,7 @@ class ViewController: UIViewController {
 
     @IBAction func calculateTip(_ sender: AnyObject) {
         
+        let defaults = UserDefaults.standard
         let tipPercentages = [0.18, 0.2, 0.25]
         
         let bill = Double(billField.text!) ?? 0
@@ -59,6 +60,7 @@ class ViewController: UIViewController {
         p2.text = String(format: "$%.2f", total / 2)
         p3.text = String(format: "$%.2f", total / 3)
         p4.text = String(format: "$%.2f", total / 4)
+        defaults.set(billField.text, forKey: "billField")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +71,8 @@ class ViewController: UIViewController {
         let defaults = UserDefaults.standard
         tipControl.selectedSegmentIndex = defaults.integer(forKey: "defaultPercentage")
         let tipPercentage = [0.18, 0.2, 0.25]
+        
+        billField.text = defaults.string(forKey: "billField") ?? "0"
         
         let bill = Double(billField.text!) ?? 0
         let tip = bill * tipPercentage[tipControl.selectedSegmentIndex]
@@ -93,6 +97,7 @@ class ViewController: UIViewController {
             animateOut()
             counter += 1
         }
+        billField.becomeFirstResponder()
     }
     
 }
